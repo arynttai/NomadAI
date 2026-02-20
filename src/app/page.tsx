@@ -214,7 +214,7 @@ export default function ChatPage() {
     };
 
     return (
-        <div className="flex w-full h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black text-slate-100 overflow-hidden font-sans">
+        <div className="flex w-full min-h-[100dvh] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black text-slate-100 overflow-hidden font-sans">
 
             {/* Background Effects */}
             <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
@@ -357,10 +357,10 @@ export default function ChatPage() {
             )}
 
             {/* Main Chat Area */}
-            <main className="flex-1 flex flex-col relative h-[100dvh]"> {/* 100dvh for mobile browsers */}
+            <main className="flex-1 flex flex-col min-h-[100dvh] relative"> {/* min-h-[100dvh] for mobile browsers */}
 
                 {/* Messages Area */}
-                <div className="flex-1 overflow-y-auto px-4 md:px-8 py-20 md:py-8 space-y-6 scrollbar-thin scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20">
+                <div className="flex-1 overflow-y-auto px-4 md:px-8 pt-20 md:pt-8 space-y-6 scrollbar-thin scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20">
                     <AnimatePresence mode="popLayout" initial={false}>
                         {messages.length === 0 ? (
                             <motion.div
@@ -403,7 +403,7 @@ export default function ChatPage() {
                                 </div>
                             </motion.div>
                         ) : (
-                            <div className="max-w-3xl mx-auto space-y-8 pb-32">
+                            <div className="max-w-3xl mx-auto space-y-8 pb-12">
                                 {messages.map((msg, i) => (
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
@@ -422,8 +422,8 @@ export default function ChatPage() {
                                         </div>
 
                                         <div className={`relative max-w-[85%] md:max-w-[75%] rounded-3xl p-5 md:p-6 shadow-xl backdrop-blur-md border ${msg.role === "user"
-                                                ? "bg-gradient-to-br from-blue-600 to-indigo-600 border-blue-400/20 text-white rounded-tr-md"
-                                                : "bg-slate-900/40 border-white/5 text-slate-300 rounded-tl-md"
+                                            ? "bg-gradient-to-br from-blue-600 to-indigo-600 border-blue-400/20 text-white rounded-tr-md"
+                                            : "bg-slate-900/40 border-white/5 text-slate-300 rounded-tl-md"
                                             }`}>
                                             <div
                                                 className="prose prose-invert prose-p:leading-relaxed prose-headings:text-sky-200"
@@ -458,7 +458,7 @@ export default function ChatPage() {
                 </div>
 
                 {/* Input Area */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent z-20">
+                <div className="w-full p-4 md:p-6 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent z-20 pb-[calc(1rem+env(safe-area-inset-bottom))] md:pb-8">
                     <div className="max-w-3xl mx-auto">
                         <motion.div
                             initial={false}
